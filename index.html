@@ -10,30 +10,86 @@
     <header class="hero">
         <h1>Лучшие корма для ваших питомцев</h1>
         <p>Быстрая доставка по всей стране</p>
-        <a href="#products" class="btn">Каталог</a>
+        <a href="#" id="openCatalog" class="btn">Каталог</a>
     </header>
-    <section id="products" class="products">
-        <h2>Популярные товары</h2>
-        <div class="product-grid">
-            <div class="product">
-                <h3>Сухой корм для собак</h3>
-                <p>Полноценное питание для ежедневного рациона</p>
-                <span class="price">1200 руб.</span>
+
+    <div id="catalogModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Популярные товары</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <h3>Сухой корм для собак</h3>
+                    <p>Полноценное питание для ежедневного рациона</p>
+                    <span class="price">1200 руб.</span>
+                    <button class="order-btn" data-product="Сухой корм для собак">Заказать</button>
+                </div>
+                <div class="product">
+                    <h3>Сухой корм для кошек</h3>
+                    <p>Сбалансированный состав витаминов и минералов</p>
+                    <span class="price">950 руб.</span>
+                    <button class="order-btn" data-product="Сухой корм для кошек">Заказать</button>
+                </div>
+                <div class="product">
+                    <h3>Лакомства для грызунов</h3>
+                    <p>Натуральные ингредиенты без искусственных добавок</p>
+                    <span class="price">350 руб.</span>
+                    <button class="order-btn" data-product="Лакомства для грызунов">Заказать</button>
+                </div>
             </div>
-            <div class="product">
-                <h3>Сухой корм для кошек</h3>
-                <p>Сбалансированный состав витаминов и минералов</p>
-                <span class="price">950 руб.</span>
-            </div>
-            <div class="product">
-                <h3>Лакомства для грызунов</h3>
-                <p>Натуральные ингредиенты без искусственных добавок</p>
-                <span class="price">350 руб.</span>
+            <button class="close" id="closeCatalog">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <h2 id="orderTitle">Заказ товара</h2>
+            <label>
+                Количество:
+                <input type="number" id="orderQty" value="1" min="1">
+            </label>
+            <div class="modal-actions">
+                <button id="confirmOrder">Оформить</button>
+                <button class="close" id="closeOrder">Отмена</button>
             </div>
         </div>
-    </section>
+    </div>
     <footer>
         <p>© 2024 Магазин "Зоокорм"</p>
     </footer>
+    <script>
+    const catalogModal = document.getElementById('catalogModal');
+    const orderModal = document.getElementById('orderModal');
+    const openCatalogBtn = document.getElementById('openCatalog');
+    const closeCatalogBtn = document.getElementById('closeCatalog');
+    const closeOrderBtn = document.getElementById('closeOrder');
+    const orderTitle = document.getElementById('orderTitle');
+    const orderQty = document.getElementById('orderQty');
+
+    openCatalogBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        catalogModal.classList.add('show');
+        catalogModal.setAttribute('aria-hidden', 'false');
+    });
+
+    closeCatalogBtn.addEventListener('click', () => {
+        catalogModal.classList.remove('show');
+        catalogModal.setAttribute('aria-hidden', 'true');
+    });
+
+    document.querySelectorAll('.order-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const product = btn.getAttribute('data-product');
+            orderTitle.textContent = `Заказ товара: ${product}`;
+            orderQty.value = 1;
+            orderModal.classList.add('show');
+            orderModal.setAttribute('aria-hidden', 'false');
+        });
+    });
+
+    closeOrderBtn.addEventListener('click', () => {
+        orderModal.classList.remove('show');
+        orderModal.setAttribute('aria-hidden', 'true');
+    });
+    </script>
 </body>
 </html>
