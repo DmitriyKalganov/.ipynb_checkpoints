@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.hero {
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero .btn {
+    display: inline-block;
+    background: #fff;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.products {
+    padding: 40px 20px;
+    text-align: center;
+}
+.product-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.product {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    width: 250px;
+}
+.price {
+    color: #4CAF50;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
